@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Light mode game colors */
+  --game-dark: hsl(220, 25%, 95%);
+  --game-darker: hsl(210, 20%, 90%);
+  --game-blue: hsl(201, 75%, 60%);
+  --game-bright: hsl(201, 85%, 45%);
+  --game-purple: hsl(261, 73%, 76%);
+  --game-success: hsl(140, 80%, 40%);
+  --game-warning: hsl(35, 84%, 50%);
+  --game-error: hsl(0, 84%, 50%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  
+  /* Dark mode game colors */
+  --game-dark: hsl(235, 30%, 12%);
+  --game-darker: hsl(227, 45%, 9%);
+  --game-blue: hsl(201, 75%, 26%);
+  --game-bright: hsl(201, 85%, 45%);
+  --game-purple: hsl(261, 73%, 76%);
+  --game-success: hsl(140, 100%, 50%);
+  --game-warning: hsl(35, 84%, 62%);
+  --game-error: hsl(0, 84%, 60%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: linear-gradient(135deg, var(--game-dark) 0%, var(--game-darker) 100%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .game-card {
+    background: linear-gradient(145deg, var(--game-darker), var(--game-blue));
+    border: 1px solid hsl(201, 85%, 45%, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px hsl(201, 85%, 45%, 0.3);
+    border-color: var(--game-bright);
+  }
+  
+  .game-button {
+    background: linear-gradient(45deg, var(--game-bright), var(--game-purple));
+    transition: all 0.3s ease;
+  }
+  
+  .game-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px hsl(201, 85%, 45%, 0.4);
+  }
+  
+  .modal-backdrop {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .search-glow:focus {
+    box-shadow: 0 0 0 3px hsl(201, 85%, 45%, 0.3);
+  }
+
+  .glow-animation {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { 
+      box-shadow: 0 0 5px var(--game-bright), 0 0 10px var(--game-bright), 0 0 15px var(--game-bright); 
+    }
+    100% { 
+      box-shadow: 0 0 10px var(--game-bright), 0 0 20px var(--game-bright), 0 0 30px var(--game-bright); 
+    }
+  }
+}
